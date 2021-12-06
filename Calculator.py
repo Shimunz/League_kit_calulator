@@ -15,8 +15,20 @@ from AbilityType import *
 #     return line
 
 
-e = AbilityType("AP", [55,95,135,175,215], 0.6, 12)
-ablity = Abilities("soul", e, 10)
+a = AbilityType("AP", [55,95,135,175,215], 0.6, 12)
 
-print(e.base_numbers, e.CD)
-print(ablity.ability_name, ablity.AbilityType.base_numbers, ablity.AbilityType.scaling, ablity.CD)
+b = AbilityType("AD", [5,9,13,17,21], 1, 12)
+
+ability_properties = []
+
+ability_properties.append(a)
+ability_properties.append(b)
+
+ablity = Abilities("soul", ability_properties, 10)
+
+
+print(a.base_numbers, a.CD)
+print(ablity.ability_name, len(ablity.AbilityType), ablity.CD)
+
+for x in range(len(ablity.AbilityType)):
+    print(ability_properties[x])
