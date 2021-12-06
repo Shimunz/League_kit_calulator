@@ -1,5 +1,5 @@
 from Champion import Abilities, Champion
-from Damage import *
+from AbilityType import *
 
 # f = open("Test.txt")
 
@@ -15,7 +15,7 @@ from Damage import *
 #     return line
 
 
-e = Damage("AP", [55,95,135,175,215], 0.6, 12)
+e = AbilityType("AP", [55,95,135,175,215], 0.6, 12)
 ablity = Abilities("soul", e, 10)
 
 print(e.base_damage, e.CD)
