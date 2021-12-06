@@ -3,6 +3,9 @@ class Champion:
     def __init__(self) -> None:
         pass
 
+    def __str__(self):
+        return str(self.__class__) + ": " + str(self.__dict__)
+    
 
     def Abillties ():
     # def __init__(self, ability_name, Damage):
@@ -25,5 +28,8 @@ class Abilities:
         self.ability_name = ability_name
         self.AbilityType = AbilityType
         self.CD = CD
+
+    def __str__(self):
+        return str(self.__class__) + ": " + str(self.__dict__)
     
 
