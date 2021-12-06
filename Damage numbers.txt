@@ -1,0 +1,77 @@
+CC
+    Type of CC
+        Soft CC: 1
+        Hard CC: 3
+    Duration
+        Meh < 1s :1
+        Medium 1s-2s : 2
+        Long > 3s : 3
+    CC Power (AS reduction, ms reduction etc)
+        Small 0% - 20%: 1
+        Average 21% - 30%: 2
+        Hard 31% - 49%: 3
+        Crippling +50%: 5
+
+AD
+    Damage
+        Base Damage
+        Scaling
+        CD
+
+AP
+    Damage
+        Base Damage
+        Scaling
+        CD
+
+Hybrid
+    Damage
+        Base 
+        Scaling
+        CD
+
+Stacks
+    Stacks
+
+Defensive
+    Flat 
+        Base
+        Scaling
+        Reducible: Y/N
+
+    %
+        Base
+        Scaling
+        Reducible: Y/N
+
+
+Abilities
+    Active
+        Mana Cost
+            Low
+            Normal
+            High
+        CD
+            Low
+            Normal
+            High 
+        Range
+            Bonus
+            Max range
+    Passive
+        CD
+            None
+            Low
+            Normal
+            High
+
+
+Supportive
+    Healing
+        LS
+        Regen
+    Sheilding
+    MS
+
+Special
+    AA Enchancer

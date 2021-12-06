@@ -1,0 +1,31 @@
+Nasus
+    P
+        Name: Soul Eater
+        Supportive  
+            Healing
+                LS: 10%/16%/22%
+    Q
+        Name: Siphoning Strike
+        Abilities 
+            AD
+                Base Damage: 30/50/70/90/110
+                Scaling
+                    Stacks
+                        Stacks(100%)
+                CD: 7.5/6.5/5.5/4.5/3.5
+            Active 
+                Mana Cost: 20
+            Special
+                AA Enchancer
+    W
+        Name
+    E
+        Name: Spirit Fire
+        Abilities
+            AP
+                Base Damage: 55/95/135/175/215
+                Scaling: 60%
+                CD: 12
+            Active
+    R
+        Name
