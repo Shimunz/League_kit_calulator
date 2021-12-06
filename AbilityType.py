@@ -7,4 +7,8 @@ class AbilityType:
             self.CD = None  
         else:
             self.CD = CD  
+
+
+    def __str__(self):
+        return str(self.__class__) + ": " + str(self.__dict__)
     
