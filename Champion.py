@@ -21,8 +21,9 @@ class Champion:
 
 
 class Abilities:
-    def __init__(self, ability_name, Damage):
+    def __init__(self, ability_name, Damage, CD):
         self.ability_name = ability_name
         self.Damage = Damage
+        self.CD = CD
     
 
