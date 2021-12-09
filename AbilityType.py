@@ -9,6 +9,6 @@ class AbilityType:
             self.CD = CD  
 
 
-    def __str__(self):
+    def __str__(self):  #Print formatting
         return str(self.__class__) + ": " + str(self.__dict__)
     
