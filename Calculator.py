@@ -9,6 +9,9 @@ fdata = json.load(f)
 champion_name = Extractor.getChampionName(fdata)
 print(champion_name)
 
+champion_stats = Extractor.getChampionStats(fdata, champion_name)
+print(champion_stats)
+
 # f = open("Test.txt")
 
 # while (True):
