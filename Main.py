@@ -3,20 +3,25 @@ from Champion import Abilities, Champion
 from AbilityType import *
 from JsonExtractor import *
 
-f = open('Aatrox.json')
-fdata = json.load(f)
+all_champion_name_list = Extractor.getAllChampionNames('12.3.1')
+print (all_champion_name_list)
 
-champion_name = Extractor.getChampionName(fdata)
-print(champion_name)
+#champion_name = Extractor.getChampionName(fdata)
+#print(champion_name)
 
-champion_stats = Extractor.getChampionStats(fdata, champion_name)
-print(champion_stats)
+#champion_stats = Extractor.getChampionStats(fdata, champion_name)
+#print(champion_stats)
+
+#name = Champion(champion_name, champion_stats, "")
+#print(name)
+
+
 
 # f = open("Test.txt")
 
 # while (True):
 #     line = f.readline()
-#     if(line != ""):
+#     if(line != ""):``
 #         print(line)
 #     else:
 #         break
