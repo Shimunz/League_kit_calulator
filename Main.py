@@ -1,10 +1,33 @@
 import json
+from msilib.schema import Patch
 from Champion import Abilities, Champion
 from AbilityType import *
 from JsonExtractor import *
+from Misc import *
+from PatchUpdate import *
 
-all_champion_name_list = Extractor.getAllChampionNames('12.3.1')
-print (all_champion_name_list)
+patch_number = '12.3'
+#all_champion_name_list = Extractor.getAllChampionNames(patch_number)
+
+all_champion_list = []
+"""
+for champ in all_champion_name_list:
+    location = 'Patch/'+patch_number+'/data/champion/'+champ+".json"
+    data = Misc.getData(location)
+
+    champion_name = Extractor.getChampionName(data)
+    champion_stats = Extractor.getChampionStats(data, champion_name)
+
+    name = Champion(champion_name, champion_stats, "")
+
+    all_champion_list.append(name)
+
+print("done")
+"""
+#result = Misc.getJsonWeb("https://raw.communitydragon.org/12.3/game/data/characters/aatrox/aatrox.bin.json")
+PatchUpdate.updateChampion(patch_number, "aatrox")
+print ("done")
+
 
 #champion_name = Extractor.getChampionName(fdata)
 #print(champion_name)
