@@ -13,9 +13,7 @@ class Extractor:
         return result
 
     def getAllChampionNames(patch_no):
-        file_location = 'Patch/' + patch_no +'/data/champion.json'
-        data = Misc.getData(file_location) 
-
+        data = Misc.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
         champion_names_list = []
 
         for i in data["data"]:

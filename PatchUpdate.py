@@ -1,11 +1,21 @@
+from asyncio.windows_events import NULL
+from cgitb import reset
 import json
 from msilib.schema import Patch
 import os
-from turtle import update
+from unittest import result
+from Misc import *
 
 from Misc import *
 
 class PatchUpdate:
+
+    def getLatestPatch():
+        url = 'https://ddragon.leagueoflegends.com/api/versions.json'
+        result = Misc.getJsonWeb(url)
+        for i in result:
+            return i
+        return NULL
 
     def getPatch(patch_no):
         url = "https://raw.communitydragon.org/" + patch_no

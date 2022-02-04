@@ -6,10 +6,11 @@ from JsonExtractor import *
 from Misc import *
 from PatchUpdate import *
 
-patch_number = '12.3'
-#all_champion_name_list = Extractor.getAllChampionNames(patch_number)
-
-all_champion_list = []
+dd_patch_number = PatchUpdate.getLatestPatch()
+cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
+all_champion_name_list = Extractor.getAllChampionNames(dd_patch_number)
+print(all_champion_name_list)
+#all_champion_list = []
 """
 for champ in all_champion_name_list:
     location = 'Patch/'+patch_number+'/data/champion/'+champ+".json"
@@ -25,8 +26,8 @@ for champ in all_champion_name_list:
 print("done")
 """
 #result = Misc.getJsonWeb("https://raw.communitydragon.org/12.3/game/data/characters/aatrox/aatrox.bin.json")
-PatchUpdate.updateChampion(patch_number, "aatrox")
-print ("done")
+#PatchUpdate.updateChampion(cc_patch_number, "aatrox")
+#print ("done")
 
 
 #champion_name = Extractor.getChampionName(fdata)

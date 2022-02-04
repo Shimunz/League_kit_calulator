@@ -59,3 +59,8 @@ class Misc:
             os.makedirs("Patch/" + dir)
         else:
             print("Directory already existed : " + " Patch/" + dir)
+
+    def ddToCcPatchNo(no):
+        i = no.rindex(".")
+        result = no[0:i]
+        return result
