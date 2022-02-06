@@ -34,8 +34,9 @@ class PatchUpdate:
         if not isDir:
             os.makedirs(dir)
 
-        with open(dir + "Aatrox.json", 'w') as outfile:
+        with open(dir + champ_name + ".json", 'w') as outfile:
             json.dump(data, outfile)
+            print("Done: " + champ_name)
 
 
     

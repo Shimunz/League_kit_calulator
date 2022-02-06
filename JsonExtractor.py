@@ -8,7 +8,6 @@ class Extractor:
             return result
 
     def getChampionStats(data, bname):
-        name = Misc.checkExtractorName(bname)
         result = data["data"][name]["stats"]
         return result
 

@@ -1,4 +1,5 @@
 import json
+from unittest import result
 import requests
 import os
 
@@ -12,40 +13,40 @@ class Misc:
         data = json.load(file)
         return data
 
-    def checkExtractorName(str):
+    def checkExtractorName(name):
         
-        if(str=="Cho'Gath"):
+        if(name=="Cho'Gath"):
             result = "Chogath"
             return result
-        elif(str=='Dr. Mundo'):
+        elif(name=='Dr. Mundo'):
             result = "DrMundo"
             return result
-        elif(str=="Kai'Sa"):
+        elif(name=="Kai'Sa"):
             result = "Kaisa"
             return result
-        elif(str=="Kha'Zix"):
+        elif(name=="Kha'Zix"):
             result = "Khazix"
             return result
-        elif(str=="Kog'Maw"):
+        elif(name=="Kog'Maw"):
             result = "KogMaw"
             return result
-        elif(str=='LeBlanc'):
+        elif(name=='LeBlanc'):
             result = 'Leblanc'
             return result
-        elif(str=='Wukong'):
+        elif(name=='Wukong'):
             result = 'MonkeyKing'
             return result
-        elif(str=='Nunu & Willump'):
+        elif(name=='Nunu & Willump'):
             result = 'Nunu'
             return result
-        elif(str=="Rek'Sai"):
+        elif(name=="Rek'Sai"):
             result = "RekSai"
             return result
-        elif(str=="Vel'Koz"):
+        elif(name=="Vel'Koz"):
             result = "Velkoz"
             return result
         else:
-            result = str.replace(" ","")
+            result = name.replace(" ","")
             result = result.replace(".","")
             return result
 
@@ -57,10 +58,14 @@ class Misc:
         isDir = os.path.isdir("Patch/" + dir)
         if not isDir:
             os.makedirs("Patch/" + dir)
-        else:
-            print("Directory already existed : " + " Patch/" + dir)
 
     def ddToCcPatchNo(no):
         i = no.rindex(".")
         result = no[0:i]
+        return result
+
+    def aplhaOnly(data):
+        result = []
+        for i in data:
+            result.append(''.join(filter(str.isalpha, i)).lower())
         return result
