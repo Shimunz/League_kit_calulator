@@ -1,7 +1,3 @@
-from email.mime import base
-from unittest import result
-
-
 class Calculations:
     
     def getMaxHP(baseHP, HPPerLvl, bonusHP, lvl):

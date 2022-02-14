@@ -144,10 +144,3 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-!Patch/
-
-Patch/*
-!Patch/12.3.1/
-
-Patch/12.3.1/*
-!Patch/12.3.1/data
