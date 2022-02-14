@@ -5,13 +5,17 @@ from AbilityType import *
 from JsonExtractor import *
 from Misc import *
 from PatchUpdate import *
-
+"""
 dd_patch_number = PatchUpdate.getLatestPatch()
 cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
 all_champion_name_list = Extractor.getAllChampionNames(dd_patch_number)
 all_champion_name_list = Misc.aplhaOnly(all_champion_name_list)
 print(all_champion_name_list)
 PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
+"""
+base_stats = Extractor.getBaseStats("aatrox")
+print("done")
+
 #all_champion_list = []
 """
 for champ in all_champion_name_list:

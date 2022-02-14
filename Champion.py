@@ -18,6 +18,23 @@ class Champion:
     def getChampionName(self):
         return self.__getitem__("champion_name")
 
+class BaseStats:
+    def __init__(self, baseHP, hpPerLevel, hpRegenPerLevel, baseDamage, damagePerLevel, baseArmor, armorPerLevel, baseSpellBlock, spellBlockPerLevel, baseMoveSpeed, attackRange, attackSpeed, attackSpeedRatio, attackSpeedPerLevel):
+        self.baseHP = baseHP
+        self.hpPerLevel = hpPerLevel
+        self.hpRegenPerLevel = hpRegenPerLevel
+        self.baseDamage = baseDamage
+        self.damagePerLevel = damagePerLevel
+        self.baseArmor = baseArmor
+        self.armorPerLevel= armorPerLevel
+        self.baseSpellBlock = baseSpellBlock
+        self.spellBlockPerLevel = spellBlockPerLevel
+        self.baseMoveSpeed = baseMoveSpeed
+        self.attackRange = attackRange
+        self.attackSpeed = attackSpeed
+        self.attackSpeedRatio = attackSpeedRatio
+        self.attackSpeedPerLevel = attackSpeedPerLevel
+
 class Abilities:
     def __init__(self, ability_name, AbilityType, CD):
         self.ability_name = ability_name

@@ -15,40 +15,48 @@ class Misc:
 
     def checkExtractorName(name):
         
-        if(name=="Cho'Gath"):
+        result = name
+
+        if(name=="aurelionsol"):
+            result = "AurelionSol"
+            return result
+        if(name=="chogath"):
             result = "Chogath"
             return result
-        elif(name=='Dr. Mundo'):
+        elif(name=='drmundo'):
             result = "DrMundo"
             return result
-        elif(name=="Kai'Sa"):
+        elif(name=="kaisa"):
             result = "Kaisa"
             return result
-        elif(name=="Kha'Zix"):
+        elif(name=="khazix"):
             result = "Khazix"
             return result
-        elif(name=="Kog'Maw"):
+        elif(name=="kogmaw"):
             result = "KogMaw"
             return result
-        elif(name=='LeBlanc'):
+        elif(name=='leblanc'):
             result = 'Leblanc'
             return result
-        elif(name=='Wukong'):
+        elif(name=='wukong'):
             result = 'MonkeyKing'
             return result
-        elif(name=='Nunu & Willump'):
+        elif(name=='monkeyking'):
+            result = 'MonkeyKing'
+            return result
+        elif(name=='nunu & willump'):
             result = 'Nunu'
             return result
-        elif(name=="Rek'Sai"):
+        elif(name=="reksai"):
             result = "RekSai"
             return result
-        elif(name=="Vel'Koz"):
+        elif(name=="velkoz"):
             result = "Velkoz"
             return result
-        else:
-            result = name.replace(" ","")
-            result = result.replace(".","")
-            return result
+        elif(name=="xinzhao"):
+            return "XinZhao"
+
+        return result
 
     def getJsonWeb(url):
         result = json.loads(requests.get(url).text)
@@ -69,3 +77,8 @@ class Misc:
         for i in data:
             result.append(''.join(filter(str.isalpha, i)).lower())
         return result
+    
+    def capFistLetter(word):
+        result = word.capitalize()
+        return result
+    

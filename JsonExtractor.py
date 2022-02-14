@@ -1,3 +1,5 @@
+from importlib.resources import path
+from Champion import *
 from Misc import *
 
 class Extractor:
@@ -8,7 +10,7 @@ class Extractor:
             return result
 
     def getChampionStats(data, bname):
-        result = data["data"][name]["stats"]
+        result = data["data"][bname]["stats"]
         return result
 
     def getAllChampionNames(patch_no):
@@ -19,3 +21,31 @@ class Extractor:
             champion_names_list.append(i)
 
         return champion_names_list
+    
+    def getBaseStats(name):
+        path = "Patch/12.3/game/data/characters/" + name + "/" + name + ".json"
+        data = Misc.getData(path)
+        ename = Misc.checkExtractorName(name)
+        if (name==ename):
+            ename = Misc.capFistLetter(name)
+
+        data_location = "Characters/" + ename +"/CharacterRecords/Root"
+
+        baseHP = data[data_location]["baseHP"]
+        hpPerLevel = data[data_location]["hpPerLevel"]
+        hpRegenPerLevel = data[data_location]["hpRegenPerLevel"]
+        baseDamage = data[data_location]["baseDamage"]
+        damagePerLevel = data[data_location]["damagePerLevel"]
+        baseArmor = data[data_location]["baseArmor"]
+        armorPerLevel = data[data_location]["armorPerLevel"]
+        baseSpellBlock = data[data_location]["baseSpellBlock"]
+        spellBlockPerLevel = data[data_location]["spellBlockPerLevel"]
+        baseMoveSpeed = data[data_location]["baseMoveSpeed"]
+        attackRange = data[data_location]["attackRange"]
+        attackSpeed = data[data_location]["attackSpeed"]
+        attackSpeedRatio = data[data_location]["attackSpeedRatio"]
+        attackSpeedPerLevel = data[data_location]["attackSpeedPerLevel"]
+                
+        champ_stats = BaseStats(baseHP, hpPerLevel, hpRegenPerLevel, baseDamage, damagePerLevel, baseArmor, armorPerLevel, baseSpellBlock, spellBlockPerLevel, baseMoveSpeed, attackRange, attackSpeed, attackSpeedRatio, attackSpeedPerLevel)
+
+        return champ_stats
