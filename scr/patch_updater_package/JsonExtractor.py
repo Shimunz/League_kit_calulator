@@ -1,3 +1,4 @@
+import pathlib
 from champion_package.Champion import *
 from patch_updater_package.Misc import *
 
@@ -22,7 +23,7 @@ class Extractor:
         return champion_names_list
     
     def getBaseStats(name):
-        path = os.path.dirname(__file__) + "../Patch/12.3/game/data/characters/" + name + "/" + name + ".json"
+        path = pathlib.Path(__file__).parent.parent.parent.joinpath("Patch/12.3/game/data/characters/" + name + "/" + name + ".json")
         data = Misc.getData(path)
         ename = Misc.checkExtractorName(name)
         if (name==ename):
