@@ -1,8 +1,8 @@
 import json
 import os
-from Misc import *
 
-from Misc import *
+from patch_updater_package.Misc import *
+
 
 class PatchUpdate:
 

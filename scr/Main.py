@@ -1,9 +1,11 @@
+
 import json
-from champion_package.Champion import *
+
 from champion_package.AbilityType import *
-from JsonExtractor import *
-from Misc import *
-from PatchUpdate import *
+from champion_package.Champion import *
+from patch_updater_package.JsonExtractor import *
+from patch_updater_package.PatchUpdate import *
+
 """
 dd_patch_number = PatchUpdate.getLatestPatch()
 cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
@@ -13,6 +15,7 @@ print(all_champion_name_list)
 PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
 """
 base_stats = Extractor.getBaseStats("aatrox")
+
 print("done")
 
 #all_champion_list = []
