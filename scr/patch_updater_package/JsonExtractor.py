@@ -1,5 +1,5 @@
 from importlib.resources import path
-from Champion import *
+from scr.champion_package.Champion import *
 from Misc import *
 
 class Extractor:

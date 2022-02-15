@@ -1,7 +1,6 @@
 import json
-from msilib.schema import Patch
-from Champion import Abilities, Champion
-from AbilityType import *
+from champion_package.Champion import *
+from champion_package.AbilityType import *
 from JsonExtractor import *
 from Misc import *
 from PatchUpdate import *
