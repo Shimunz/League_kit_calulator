@@ -1,21 +1,29 @@
-from asyncio.windows_events import NULL
-from cgitb import reset
 import json
-from msilib.schema import Patch
 import os
-from unittest import result
 from Misc import *
 
 from Misc import *
 
 class PatchUpdate:
 
-    def getLatestPatch():
-        url = 'https://ddragon.leagueoflegends.com/api/versions.json'
-        result = Misc.getJsonWeb(url)
+    #Gets the lastest patch version
+    def getLatestPatch(): 
+        result = PatchUpdate.getLocalVersions()
         for i in result:
             return i
-        return NULL
+    
+    #Gets all versoin numbers off the web
+    def getAllLastestVersion():
+        url = 'https://ddragon.leagueoflegends.com/api/versions.json'
+        result = Misc.getJsonWeb(url)
+        with open("versions.json", 'w') as outfile:
+            json.dump(result, outfile)
+        return result
+
+    def getLocalVersions():
+        result = Misc.getData("versions.json")
+        return result
+
 
     def getPatch(patch_no):
         url = "https://raw.communitydragon.org/" + patch_no
