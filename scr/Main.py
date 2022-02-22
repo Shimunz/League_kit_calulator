@@ -6,13 +6,14 @@ from champion_package.Champion import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
 
+#PatchUpdate.getAllLastestVersion()
+#dd_patch_number = PatchUpdate.getLatestPatch()
+#cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
+#all_champion_name_list = Extractor.getAllChampionNames(dd_patch_number)
+#all_champion_name_list = Misc.aplhaOnly(all_champion_name_list)
+#print(all_champion_name_list)
+#PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
 """
-dd_patch_number = PatchUpdate.getLatestPatch()
-cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
-all_champion_name_list = Extractor.getAllChampionNames(dd_patch_number)
-all_champion_name_list = Misc.aplhaOnly(all_champion_name_list)
-print(all_champion_name_list)
-PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
 """
 base_stats = Extractor.getBaseStats("aatrox")
 
