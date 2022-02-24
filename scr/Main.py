@@ -1,10 +1,9 @@
 
-import json
-
 from champion_package.AbilityType import *
 from champion_package.Champion import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
+from calculator_package.Calculations import *
 
 #PatchUpdate.getAllLastestVersion()
 #dd_patch_number = PatchUpdate.getLatestPatch()
@@ -15,7 +14,16 @@ from patch_updater_package.PatchUpdate import *
 #PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
 """
 """
-base_stats = Extractor.getBaseStats("aatrox")
+c_base_stats = Extractor.getBaseStats("aatrox")
+
+abiliities = AbilityType(0, 0, 0, 0)
+
+aatrox = Champion("Aatrox", c_base_stats, abiliities)
+
+total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
+aatrox.champion_properties['stats'] = total_stats
+
+print(aatrox.champion_properties['stats'].total_stats['attackSpeed'])
 
 print("done")
 
