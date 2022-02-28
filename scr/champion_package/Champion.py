@@ -1,12 +1,12 @@
 
 class Champion:
-    def __init__(self, champion_name, base_stats, abilities):
+    def __init__(self, champion_name, base_stats, abilities, stats):
         self.champion_properties = {
             'champion_name' : champion_name,
             'base_stats' : base_stats,
             'abilities' : abilities,
             'items' : None,
-            'stats' : None
+            'stats' : stats
         }
         
     def __str__(self):
@@ -73,6 +73,7 @@ class Stats:
             'baseMR' : 0,
             'bonusMR' : 0,
             'attackSpeed' : 0,
+            'attackRange' : 0,
             'critDamage' : 0,
             'critChance' : 0
         }

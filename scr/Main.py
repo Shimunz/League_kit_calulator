@@ -1,29 +1,33 @@
 
+from calculator_package.Calculations import *
 from champion_package.AbilityType import *
 from champion_package.Champion import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
-from calculator_package.Calculations import *
 
 #PatchUpdate.getAllLastestVersion()
 #dd_patch_number = PatchUpdate.getLatestPatch()
 #cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
-#all_champion_name_list = Extractor.getAllChampionNames(dd_patch_number)
-#all_champion_name_list = Misc.aplhaOnly(all_champion_name_list)
+#PatchUpdate.getAllLastestChampionNames(dd_patch_number)
+all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
+all_champion_name_list_alpha = Misc.aplhaOnly(all_champion_name_list)
 #print(all_champion_name_list)
 #PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
-"""
-"""
-c_base_stats = Extractor.getBaseStats("aatrox")
 
-abiliities = AbilityType(0, 0, 0, 0)
+all_champions = []
 
-aatrox = Champion("Aatrox", c_base_stats, abiliities)
+for champ in all_champion_name_list:
+    c_base_stats = Extractor.getBaseStats(champ)
+    abilities = AbilityType(0, 0, 0, 0)
+    total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
+    champion = Champion(champ, c_base_stats, abilities, total_stats)
+    all_champions.append(champion)
 
-total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
-aatrox.champion_properties['stats'] = total_stats
+#c_base_stats = Extractor.getBaseStats("aatrox")
 
-print(aatrox.champion_properties['stats'].total_stats['attackSpeed'])
+#total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
+
+#print(aatrox.champion_properties['stats'].total_stats['attackSpeed'])
 
 print("done")
 

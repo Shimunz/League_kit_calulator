@@ -28,6 +28,20 @@ class PatchUpdate:
     def getPatch(patch_no):
         url = "https://raw.communitydragon.org/" + patch_no
 
+    def getAllLastestChampionNames(patch_no):
+        data = Misc.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
+        champion_names_list = []
+
+        for i in data["data"]:
+            champion_names_list.append(i)
+
+        with open("champion_list.json", 'w') as outfile:
+            json.dump(champion_names_list, outfile)
+
+    def getAllLocalChampionNames():
+        result = Misc.getData("champion_list.json")
+        return result
+
     def updateAllChampions(patch_no, champ_list):
         for champ in champ_list:
             PatchUpdate.updateChampion(patch_no, champ)

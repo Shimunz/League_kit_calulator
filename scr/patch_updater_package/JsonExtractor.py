@@ -25,26 +25,52 @@ class Extractor:
     def getBaseStats(name):
         path = pathlib.Path(__file__).parent.parent.parent.joinpath("Patch/12.4/game/data/characters/" + name + "/" + name + ".json")
         data = Misc.getData(path)
+        '''
         ename = Misc.checkExtractorName(name)
         if (name==ename):
             ename = Misc.capFistLetter(name)
+        
+        
+        elif(ename == 'Jarvaniv'):
+            ename = 'JarvanIV'
+        elif(ename == 'Leesin'):
+            ename = 'LeeSin'
+        '''
+        if (name == 'Fiddlesticks'):
+            name = 'FiddleSticks'
 
-        data_location = "Characters/" + ename +"/CharacterRecords/Root"
+        data_location = "Characters/" + name +"/CharacterRecords/Root"
+
+        if (name == 'Renata'):
+            data_location = "{541edaee}"
 
         baseHP = data[data_location]["baseHP"]
         hpPerLevel = data[data_location]["hpPerLevel"]
         hpRegenPerLevel = data[data_location]["hpRegenPerLevel"]
         baseDamage = data[data_location]["baseDamage"]
-        damagePerLevel = data[data_location]["damagePerLevel"]
+        if (name != 'Senna'):
+            damagePerLevel = data[data_location]["damagePerLevel"]
+        else:
+            damagePerLevel = 0
+        
         baseArmor = data[data_location]["baseArmor"]
-        armorPerLevel = data[data_location]["armorPerLevel"]
+
+        if (name != 'Thresh'):
+            armorPerLevel = data[data_location]["armorPerLevel"]
+        else:
+             armorPerLevel = 0
+
         baseSpellBlock = data[data_location]["baseSpellBlock"]
         spellBlockPerLevel = data[data_location]["spellBlockPerLevel"]
         baseMoveSpeed = data[data_location]["baseMoveSpeed"]
         attackRange = data[data_location]["attackRange"]
         attackSpeed = data[data_location]["attackSpeed"]
         attackSpeedRatio = data[data_location]["attackSpeedRatio"]
-        attackSpeedPerLevel = data[data_location]["attackSpeedPerLevel"]
+
+        if (name != 'Jhin'):
+            attackSpeedPerLevel = data[data_location]["attackSpeedPerLevel"]
+        else:
+            attackSpeedPerLevel = 0
                 
         champ_stats = BaseStats(baseHP, hpPerLevel, hpRegenPerLevel, baseDamage, damagePerLevel, baseArmor, armorPerLevel, baseSpellBlock, spellBlockPerLevel, baseMoveSpeed, attackRange, attackSpeed, attackSpeedRatio, attackSpeedPerLevel)
 
