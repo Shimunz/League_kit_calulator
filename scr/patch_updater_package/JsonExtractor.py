@@ -12,7 +12,8 @@ class Extractor:
     def getChampionStats(data, bname):
         result = data["data"][bname]["stats"]
         return result
-
+    
+    #Redundant code
     def getAllChampionNames(patch_no):
         data = Misc.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
         champion_names_list = []
@@ -44,7 +45,10 @@ class Extractor:
         if (name == 'Renata'):
             data_location = "{541edaee}"
 
-        baseHP = data[data_location]["baseHP"]
+        if (name == 'Kled'):
+            baseHP = data[data_location]["baseHP"] + 450
+        else:
+            baseHP = data[data_location]["baseHP"]
         hpPerLevel = data[data_location]["hpPerLevel"]
         hpRegenPerLevel = data[data_location]["hpRegenPerLevel"]
         baseDamage = data[data_location]["baseDamage"]

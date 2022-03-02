@@ -43,7 +43,7 @@ class BaseStats:
     def __getitem__(self,key):
         return self.base_stats_properties[key]
 
-    def __setItem__(self, key, value):
+    def __setitem__(self, key, value):
         self.base_stats_properties[key] = value
     
     def getBaseStat(self, key):

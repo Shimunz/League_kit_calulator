@@ -4,15 +4,21 @@ from champion_package.AbilityType import *
 from champion_package.Champion import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
+from calculator_package.Points import *
 
-#PatchUpdate.getAllLastestVersion()
-#dd_patch_number = PatchUpdate.getLatestPatch()
-#cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
-#PatchUpdate.getAllLastestChampionNames(dd_patch_number)
+def update():
+    PatchUpdate.getAllLastestVersion()
+    dd_patch_number = PatchUpdate.getLatestPatch()
+    cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
+    PatchUpdate.getAllLastestChampionNames(dd_patch_number)
+    all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
+    all_champion_name_list_alpha = Misc.aplhaOnly(all_champion_name_list)
+    print(all_champion_name_list)
+    PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
+
+#update()
+
 all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
-all_champion_name_list_alpha = Misc.aplhaOnly(all_champion_name_list)
-#print(all_champion_name_list)
-#PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
 
 all_champions = []
 
@@ -23,6 +29,20 @@ for champ in all_champion_name_list:
     champion = Champion(champ, c_base_stats, abilities, total_stats)
     all_champions.append(champion)
 
+arr = []
+
+for champ in all_champions:
+    hp = champ.champion_properties['stats'].total_stats['hp']
+
+    arr.append(hp)
+    
+arr.sort()
+
+p = Points()
+
+i = Calculations.calculatePoints(arr)
+p.points_properties['hp'] = i
+
 #c_base_stats = Extractor.getBaseStats("aatrox")
 
 #total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
@@ -30,6 +50,9 @@ for champ in all_champion_name_list:
 #print(aatrox.champion_properties['stats'].total_stats['attackSpeed'])
 
 print("done")
+
+
+
 
 #all_champion_list = []
 """
