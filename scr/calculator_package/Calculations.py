@@ -1,4 +1,6 @@
+import numpy as np
 from champion_package.Champion import Stats
+
 
 class Calculations:
     
@@ -37,3 +39,15 @@ class Calculations:
         result.total_stats['attackSpeed'] = (base_stats['attackSpeedRatio'] * base_stats['attackSpeed']) + (base_stats['attackSpeedPerLevel'] * lvl)
         result.total_stats['attakRange'] = base_stats['attackRange']
         return result
+
+    def calculatePoints(a):
+        i = []
+        n = 20
+        arr = np.array(a)
+
+        while (n < 100):
+            p = np.percentile(arr, n)
+            i.append(p)
+            n += 20
+        
+        return i
