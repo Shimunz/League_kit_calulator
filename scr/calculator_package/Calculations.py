@@ -34,8 +34,8 @@ class Calculations:
         result.total_stats['baseHp'] = base_stats['baseHP']
         result.total_stats['hp'] = base_stats['baseHP'] + (base_stats['hpPerLevel'] * lvl)
         result.total_stats['baseAD'] = base_stats['baseDamage'] + (base_stats['damagePerLevel'] * lvl)
-        result.total_stats['baseArmour'] = base_stats['baseArmor'] * (base_stats['armorPerLevel'] * lvl)
-        result.total_stats['baseMR'] = base_stats['baseSpellBlock'] * (base_stats['spellBlockPerLevel'] * lvl)
+        result.total_stats['baseArmour'] = base_stats['baseArmor'] + (base_stats['armorPerLevel'] * lvl)
+        result.total_stats['baseMR'] = base_stats['baseSpellBlock'] + (base_stats['spellBlockPerLevel'] * lvl)
         result.total_stats['attackSpeed'] = (base_stats['attackSpeedRatio'] * base_stats['attackSpeed']) + (base_stats['attackSpeedPerLevel'] * lvl)
         result.total_stats['attakRange'] = base_stats['attackRange']
         return result
