@@ -37,7 +37,7 @@ class Calculations:
         result.total_stats['baseArmour'] = base_stats['baseArmor'] + (base_stats['armorPerLevel'] * lvl)
         result.total_stats['baseMR'] = base_stats['baseSpellBlock'] + (base_stats['spellBlockPerLevel'] * lvl)
         result.total_stats['attackSpeed'] = (base_stats['attackSpeedRatio'] * base_stats['attackSpeed']) + (base_stats['attackSpeedPerLevel'] * lvl)
-        result.total_stats['attakRange'] = base_stats['attackRange']
+        result.total_stats['attackRange'] = base_stats['attackRange']
         return result
 
     def calculatePoints(a):
