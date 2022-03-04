@@ -1,4 +1,6 @@
 
+
+from operator import itemgetter
 from calculator_package.Calculations import *
 from champion_package.AbilityType import *
 from champion_package.Champion import *
@@ -14,9 +16,24 @@ def update():
     all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
     all_champion_name_list_alpha = Misc.aplhaOnly(all_champion_name_list)
     print(all_champion_name_list)
-    PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list)
+    PatchUpdate.updateAllChampions(cc_patch_number, all_champion_name_list_alpha)
 
 #update()
+
+statss = ['hp',
+            'bonusHp',
+            'baseHp',
+            'baseAD',
+            'bonusAD',
+            'AP',
+            'baseArmour',
+            'bonusArmour',
+            'baseMR',
+            'bonusMR',
+            'attackSpeed',
+            'attackRange',
+            'critDamage',
+            'critChance']
 
 all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
 
@@ -31,18 +48,45 @@ for champ in all_champion_name_list:
 
 arr = []
 
-for champ in all_champions:
-    hp = champ.champion_properties['stats'].total_stats['hp']
-
-    arr.append(hp)
-    
-arr.sort()
-
 p = Points()
 
-i = Calculations.calculatePoints(arr)
-p.points_properties['hp'] = i
+for x in statss:
 
+    for champ in all_champions:
+        hp = champ.champion_properties['stats'].total_stats[x]
+        arr.append(hp)
+    
+    arr.sort()
+
+    i = Calculations.calculatePoints(arr)
+    p.points_properties[x] = i
+    arr.clear()
+    
+    for champ in all_champions:
+        z = 1
+        for value in p.points_properties[x]:
+            champ_value = champ.champion_properties['stats'].total_stats[x]
+            if (not(champ_value <= value)): 
+                champ.champion_properties['pointStats'].point_stats[x] = z
+            z = z + 1
+
+
+parry = []
+
+for champ in all_champions:
+    i = 0
+    for value in champ.champion_properties['pointStats'].point_stats:
+        i += champ.champion_properties['pointStats'].point_stats[value]
+    name = champ.champion_properties['champion_name']
+    x = str(i)
+    ayy = [name, i]
+    parry.append(ayy)
+    parry.sort(key=itemgetter(1), reverse=True)
+
+for champ in parry:
+    for value in champ:
+        print(value, end=" ")
+    print(" ")
 #c_base_stats = Extractor.getBaseStats("aatrox")
 
 #total_stats = Calculations.calculateBaseStats(c_base_stats, 18)
