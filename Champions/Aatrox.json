@@ -1,0 +1,74 @@
+{
+    "Aatrox": {
+        "Abilities": [
+            "AatroxP",
+            "AatroxQ",
+            "AatroxW",
+            "AatroxE",
+            "AatroxR"
+        ]
+    },
+    "AatroxP": {
+        "Name": "The Darkin Blade",
+        "Heal":{
+            "Type": "Lifesteal",
+            "Value":[0.05,0.12],
+            "Reduction":["Minions", 0.25]
+        },
+        "Counters":["Parries"],
+        "Max_Health_Damage":{
+            "Type":"AD",
+            "Values":[0.05,0.12],
+            "Formula":"0.05+0.07/17*(level-1)"
+        }
+
+    },
+    "AatroxQ": {
+        "Name": "The Darkin Blade",
+        "CD": [
+            14,
+            12,
+            10,
+            8,
+            6
+        ],
+        "Base_Damage": {
+            "Type": "AD",
+            "Values": [
+                61.0,
+                183.0,
+                305.0,
+                427.0,
+                549.0
+            ]
+        },
+        "Scaling": {
+            "Type": "AD",
+            "Values": [
+                3.660,
+                3.965,
+                4.270,
+                4.575,
+                4.880
+            ]
+        },
+        "CC": {
+            "Type": "Knock_Up",
+            "Duration": 0.25
+        },
+        "Special":{
+            "Ability_CD_Reduction":{
+                "AatroxP":[12]
+            },
+            "Minion_Damage_Reduction": 0.55
+        },
+        "Cast_Time": 1.8,
+        "Range": 427,
+        "Radius": 123.3,
+        "Counters": ["Spell_Shield"],
+        "Type": "AOE"
+    },
+    "AatroxW": {},
+    "AatroxE": {},
+    "AatroxR": {}
+}
