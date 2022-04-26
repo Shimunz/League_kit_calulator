@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Menu, ttk
+from tkinter import *
 from calculator_package.Calculations import *
 from champion_package.AbilityType import *
 from champion_package.Champion import *
@@ -7,6 +7,7 @@ from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
 from calculator_package.Points import *
 from calculator_package.AbilityCalculations import *
+
 
 def update():
     PatchUpdate.getAllLastestVersion()
@@ -19,29 +20,49 @@ def update():
     PatchUpdate.updateAllChampions(
         cc_patch_number, all_champion_name_list_alpha)
 
-#root window
-root = tk.Tk()
 
-#Create menubar
-menu_bar = Menu(root)
-root.config(menu=menu_bar)
+class App(tk.Tk):
 
-#create the file menu
-file_menu = Menu(
-    menu_bar,
-    tearoff=0
-)
+    def __init__(self):
+        super().__init__()
 
-#add menu items to file menu
-file_menu.add_command(label='Update', command=lambda: update())
+        # Configure Root window
+        self.title("League Kit Calculator")
 
-menu_bar.add_cascade(
-    label="Options",
-    menu=file_menu
-)
+        # Create menubar
+        menu_bar = Menu(self)
+        self.config(menu=menu_bar)
 
-def select(option):
-    print(option)
+        # create the file menu
+        file_menu = Menu(
+            menu_bar,
+            tearoff=0
+        )
+
+        option_menu = Menu(
+            menu_bar,
+            tearoff=0
+        )
+
+        menu_bar.add_cascade(
+            label="File",
+            menu=file_menu
+        )
+
+        menu_bar.add_cascade(
+            label="Options",
+            menu=option_menu
+        )
+
+        # add menu items to file menu
+        option_menu.add_command(label='Update', command=lambda: update())
+
+        file_menu.add_separator()
+        file_menu.add_command(label='Exit', command=self.destroy)
+
+        
 
 
-root.mainloop()
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
