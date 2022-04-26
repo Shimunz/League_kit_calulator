@@ -1,5 +1,3 @@
-
-
 from operator import itemgetter
 from calculator_package.Calculations import *
 from champion_package.AbilityType import *
