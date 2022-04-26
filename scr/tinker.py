@@ -44,7 +44,4 @@ def select(option):
     print(option)
 
 
-
-
-
 root.mainloop()
