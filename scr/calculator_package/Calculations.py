@@ -1,5 +1,5 @@
 import numpy as np
-from champion_package.Champion import Stats
+from champion_package.Stats import Stats
 
 
 class Calculations:
