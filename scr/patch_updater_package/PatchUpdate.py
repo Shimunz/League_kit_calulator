@@ -1,7 +1,7 @@
 import json
 import os
 
-from patch_updater_package.Misc import *
+from patch_updater_package.Extra import *
 
 
 class PatchUpdate:
@@ -15,13 +15,13 @@ class PatchUpdate:
     #Gets all versoin numbers off the web
     def getAllLastestVersion():
         url = 'https://ddragon.leagueoflegends.com/api/versions.json'
-        result = Misc.getJsonWeb(url)
+        result = Extra.getJsonWeb(url)
         with open("versions.json", 'w') as outfile:
             json.dump(result, outfile)
         return result
 
     def getLocalVersions():
-        result = Misc.getData("versions.json")
+        result = Extra.getData("versions.json")
         return result
 
 
@@ -29,7 +29,7 @@ class PatchUpdate:
         url = "https://raw.communitydragon.org/" + patch_no
 
     def getAllLastestChampionNames(patch_no):
-        data = Misc.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
+        data = Extra.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
         champion_names_list = []
 
         for i in data["data"]:
@@ -39,7 +39,7 @@ class PatchUpdate:
             json.dump(champion_names_list, outfile)
 
     def getAllLocalChampionNames():
-        result = Misc.getData("champion_list.json")
+        result = Extra.getData("champion_list.json")
         return result
 
     def updateAllChampions(patch_no, champ_list):
@@ -48,8 +48,8 @@ class PatchUpdate:
 
     def updateChampion(patch_no, champ_name):
         url = "https://raw.communitydragon.org/" + patch_no + "/game/data/characters/" + champ_name + "/" + champ_name + ".bin.json"
-        Misc.createDir(patch_no)
-        data = Misc.getJsonWeb(url)
+        Extra.createDir(patch_no)
+        data = Extra.getJsonWeb(url)
 
         dir = "Patch/" + patch_no + "/game/data/characters/" + champ_name + "/"
         isDir = os.path.isdir(dir)

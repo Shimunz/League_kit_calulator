@@ -1,6 +1,6 @@
 import pathlib
 from champion_package.Champion import *
-from patch_updater_package.Misc import *
+from patch_updater_package.Extra import *
 
 class Extractor:
     
@@ -15,7 +15,7 @@ class Extractor:
     
     #Redundant code
     def getAllChampionNames(patch_no):
-        data = Misc.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
+        data = Extra.getJsonWeb("http://ddragon.leagueoflegends.com/cdn/" + patch_no + "/data/en_US/champion.json")
         champion_names_list = []
 
         for i in data["data"]:
@@ -25,11 +25,11 @@ class Extractor:
     
     def getBaseStats(name):
         path = pathlib.Path(__file__).parent.parent.parent.joinpath("Patch/12.4/game/data/characters/" + name + "/" + name + ".json")
-        data = Misc.getData(path)
+        data = Extra.getData(path)
         '''
-        ename = Misc.checkExtractorName(name)
+        ename = Extra.checkExtractorName(name)
         if (name==ename):
-            ename = Misc.capFistLetter(name)
+            ename = Extra.capFistLetter(name)
         
         
         elif(ename == 'Jarvaniv'):

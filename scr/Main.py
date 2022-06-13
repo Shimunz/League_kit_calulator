@@ -1,20 +1,22 @@
 from operator import itemgetter
+
+from calculator_package.AbilityCalculations import *
 from calculator_package.Calculations import *
+from calculator_package.Points import *
 from champion_package.AbilityType import *
 from champion_package.Champion import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.PatchUpdate import *
-from calculator_package.Points import *
-from calculator_package.AbilityCalculations import *
+from patch_updater_package.Extra import Extra
 
 
 def update():
     PatchUpdate.getAllLastestVersion()
     dd_patch_number = PatchUpdate.getLatestPatch()
-    cc_patch_number = Misc.ddToCcPatchNo(dd_patch_number)
+    cc_patch_number = Extra.ddToCcPatchNo(dd_patch_number)
     PatchUpdate.getAllLastestChampionNames(dd_patch_number)
     all_champion_name_list = PatchUpdate.getAllLocalChampionNames()
-    all_champion_name_list_alpha = Misc.aplhaOnly(all_champion_name_list)
+    all_champion_name_list_alpha = Extra.aplhaOnly(all_champion_name_list)
     print(all_champion_name_list)
     PatchUpdate.updateAllChampions(
         cc_patch_number, all_champion_name_list_alpha)
@@ -94,7 +96,7 @@ def calculateChampions():
 #calculateChampions()
 
 file_locaiton = "Champions/Aatrox.json"
-data = Misc.getData(file_locaiton)
+data = Extra.getData(file_locaiton)
 ac = AbilityCalculations.ability_check(data, "Aatrox")
 current_ability_stats = []
 all_ability_stats = []
@@ -118,7 +120,7 @@ print("done")
 """
 for champ in all_champion_name_list:
     location = 'Patch/'+patch_number+'/data/champion/'+champ+".json"
-    data = Misc.getData(location)
+    data = Extra.getData(location)
 
     champion_name = Extractor.getChampionName(data)
     champion_stats = Extractor.getChampionStats(data, champion_name)
@@ -129,7 +131,7 @@ for champ in all_champion_name_list:
 
 print("done")
 """
-#result = Misc.getJsonWeb("https://raw.communitydragon.org/12.3/game/data/characters/aatrox/aatrox.bin.json")
+#result = Extra.getJsonWeb("https://raw.communitydragon.org/12.3/game/data/characters/aatrox/aatrox.bin.json")
 #PatchUpdate.updateChampion(cc_patch_number, "aatrox")
 #print ("done")
 

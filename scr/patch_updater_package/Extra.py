@@ -2,7 +2,7 @@ import json
 import requests
 import os
 
-class Misc:
+class Extra:
     
     # Gets data from a .json file and returns that data
     # Takes in file location as input
