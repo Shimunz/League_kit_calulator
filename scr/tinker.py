@@ -25,30 +25,17 @@ def update():
     PatchUpdate.updateAllChampions(
         cc_patch_number, all_champion_name_list_alpha)
 
-def Launch_Editor():
-    GUIEditor.run()
+def open_editor(self):
+    EditorFrame(self)
 
 class MainFrame(ttk.Frame):
     def __init__(self, container):
         super().__init__(container)
 
-        options = {'padx': 5, 'pady': 5}
-
-        # label
-        self.label = ttk.Label(self, text='Search')
-        self.label.pack()
-
-        # button
-        self.button = ttk.Button(self, text='Click Me')
-        self.button['command'] = self.button_clicked
-        self.button.pack(**options)
-
-        # show the frame on the container
-        self.pack(**options)
-
-    def button_clicked(self):
-        showinfo(title='Information',
-                 message='Hello, Tkinter!')
+        ttk.Button(self,
+                text='Editor',
+                command=lambda:open_editor(self)).pack()
+        self.pack()
 
 class App(tk.Tk):
 
@@ -86,7 +73,7 @@ class App(tk.Tk):
         # add menu items to file menu
         option_menu.add_command(label='Update', command=lambda: update())
 
-        file_menu.add_command(label='Updater', command=lambda: Launch_Editor())
+        file_menu.add_command(label='Updater', command=lambda: EditorFrame(self))
         file_menu.add_separator()
         file_menu.add_command(label='Exit', command=self.destroy)
 
