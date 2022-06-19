@@ -1,9 +1,9 @@
+from ipaddress import collapse_addresses
 import tkinter as tk
-from calendar import month_name
-from msilib.schema import ComboBox
-from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo
+
+from DAO.ChampionDAO import *
 
 
 class EditorFrame(tk.Toplevel):
@@ -15,6 +15,23 @@ class EditorFrame(tk.Toplevel):
 
         current_var = tk.StringVar()
         self.comboBox = ttk.Combobox(self, textvariable=current_var)
-        self.comboBox['values'] = [month_name[m][0:3] for m in range(1, 13)] 
+        self.comboBox['values'] = ChampionDAO.all_champion_names
         self.comboBox.pack(side="left")
         
+        columns = ('champion')
+
+        tree = ttk.Treeview(self, columns=columns, show='headings')
+        tree.heading('Champion', text="Champion")
+
+        for i in ChampionDAO.all_champion_names:
+            tree.insert('', tk.END, values=i)
+
+        tree.grid(row=0, column=0, sticky='nsew')
+
+        # add a scrollbar
+        scrollbar = ttk.Scrollbar(self, orient=tk.VERTICAL, command=tree.yview)
+        tree.configure(yscroll=scrollbar.set)
+        scrollbar.grid(row=0, column=1, sticky='ns')
+
+        tree.pack()
+        self.pack()

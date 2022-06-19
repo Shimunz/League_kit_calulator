@@ -73,7 +73,7 @@ class App(tk.Tk):
         # add menu items to file menu
         option_menu.add_command(label='Update', command=lambda: update())
 
-        file_menu.add_command(label='Updater', command=lambda: EditorFrame(self))
+        file_menu.add_command(label='Updater', command=lambda: open_editor(self))
         file_menu.add_separator()
         file_menu.add_command(label='Exit', command=self.destroy)
 
