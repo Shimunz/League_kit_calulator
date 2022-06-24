@@ -1,10 +1,6 @@
-from ipaddress import collapse_addresses
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
-
-from urllib3 import Retry
-
 from DAO.ChampionDAO import *
 
 
@@ -62,12 +58,5 @@ class EditorFrame(tk.Toplevel):
             record = item['values']
             # show a message
             showinfo(title='Information', message=','.join(record))
-
-        
-
-        
-
-        tree.pack()
-        self.pack()
 
     

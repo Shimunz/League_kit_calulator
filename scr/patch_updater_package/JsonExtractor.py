@@ -1,6 +1,7 @@
 import pathlib
 from champion_package.Champion import *
 from patch_updater_package.Extra import *
+from champion_package.BaseStats import *
 
 class Extractor:
     
@@ -23,8 +24,8 @@ class Extractor:
 
         return champion_names_list
     
-    def getBaseStats(name):
-        path = pathlib.Path(__file__).parent.parent.parent.joinpath("Patch/12.4/game/data/characters/" + name + "/" + name + ".json")
+    def getBaseStats(name, patch_no):
+        path = pathlib.Path(__file__).parent.parent.parent.joinpath("Patch/" + patch_no + "/game/data/characters/" + name + "/" + name + ".json")
         data = Extra.getData(path)
         '''
         ename = Extra.checkExtractorName(name)
@@ -42,8 +43,8 @@ class Extractor:
 
         data_location = "Characters/" + name +"/CharacterRecords/Root"
 
-        if (name == 'Renata'):
-            data_location = "{541edaee}"
+        if(name == 'Belveth'):
+            data_location = "{3e3f9247}"
 
         if (name == 'Kled'):
             baseHP = data[data_location]["baseHP"] + 450
@@ -71,10 +72,10 @@ class Extractor:
         attackSpeed = data[data_location]["attackSpeed"]
         attackSpeedRatio = data[data_location]["attackSpeedRatio"]
 
-        if (name != 'Jhin'):
-            attackSpeedPerLevel = data[data_location]["attackSpeedPerLevel"]
-        else:
+        if (name =='Jhin' or name == 'Belveth'):
             attackSpeedPerLevel = 0
+        else:
+            attackSpeedPerLevel = data[data_location]["attackSpeedPerLevel"]
                 
         champ_stats = BaseStats(baseHP, hpPerLevel, hpRegenPerLevel, baseDamage, damagePerLevel, baseArmor, armorPerLevel, baseSpellBlock, spellBlockPerLevel, baseMoveSpeed, attackRange, attackSpeed, attackSpeedRatio, attackSpeedPerLevel)
 

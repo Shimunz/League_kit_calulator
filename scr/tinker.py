@@ -12,6 +12,7 @@ from GUIEditor import *
 from patch_updater_package.JsonExtractor import *
 from patch_updater_package.Extra import *
 from patch_updater_package.PatchUpdate import *
+from DAO.ChampionDAO import *
 
 
 def update():
@@ -78,10 +79,11 @@ class App(tk.Tk):
         file_menu.add_command(label='Exit', command=self.destroy)
 
 
-class ControlFrame():
-    pass
-
 if __name__ == "__main__":
+
+    ChampionDAO.all_champion_names = PatchUpdate.getAllLocalChampionNames()
+    ChampionDAO.champion_list = ChampionDAO.getAllChampionStats(ChampionDAO.all_champion_names)
+
     app = App()
     frame = MainFrame(app)
     app.mainloop()
