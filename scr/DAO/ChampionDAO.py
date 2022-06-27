@@ -6,9 +6,11 @@ from champion_package.Champion import *
 from patch_updater_package.PatchDAO import *
 
 class ChampionDAO:
-    all_champion_names = []
+    all_champion_names = PatchUpdate.getAllLocalChampionNames()
     champion_list = []
 
+    def getAllChampionNames():
+        return PatchUpdate.getAllLocalChampionNames
 
     def getAllChampionStats(name_list):
         champion_list = []
