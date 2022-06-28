@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 from DAO.ChampionDAO import *
+import itertools
+
 
 
 class EditorFrame(tk.Toplevel):
@@ -16,10 +18,10 @@ class EditorFrame(tk.Toplevel):
         self.champion_selected.trace('w', self.update)
 
         self.comboBox = ttk.Combobox(self, textvariable=self.champion_selected)
-
-        self.searchbox = self.create_select_champion_widget()
-
+        
+        self.create_select_champion_widget()
         self.tree = self.create_tree_widget()
+        
     
     #auto updates the combox depending on user input
     #TODO: Make searching not case sensitive.
@@ -38,6 +40,7 @@ class EditorFrame(tk.Toplevel):
         #self.comboBox.pack(side="left")
 
     def create_tree_widget(self):
+        champion_list = ChampionDAO.champion_list
         columns = ('attribute', 'value')
         tree = ttk.Treeview(self, columns=columns, show='headings')
 
@@ -57,13 +60,20 @@ class EditorFrame(tk.Toplevel):
 
         tree.configure(yscrollcommand=scrollbar.set)
 
-        champions = []
-        for i in ChampionDAO.all_champion_names:
-            champions.append(i)
+        champ_stats = []
 
-        for c in ChampionDAO.all_champion_names:
-            tree.insert('', tk.END, values=c)
+        for champs in ChampionDAO.champion_list:
+            if champs.champion_properties['champion_name']=="Aatrox":
+                champ = champs.champion_properties['stats'].total_stats
+            break                    
 
+        for c in champ:
+            print (c)
+            champ_stats.append((c, champ[c]))
+
+        for i in champ_stats:
+            tree.insert('', tk.END, values=i)        
+            
         return tree
 
     def item_selected(self, event):
