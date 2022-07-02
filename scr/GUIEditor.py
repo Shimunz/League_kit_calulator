@@ -10,6 +10,7 @@ import itertools
 class EditorFrame(tk.Toplevel):
 
     champion_list = ChampionDAO.all_champion_names
+    #tree_has_children=False
 
     def __init__(self, container):
         super().__init__(container)
@@ -41,9 +42,8 @@ class EditorFrame(tk.Toplevel):
         #self.comboBox.pack(side="left")
 
     #Creates the tree
-    #TODO make tree be empty. only fill tree when someone selected champion
     def create_tree_widget(self):
-        champion_list = ChampionDAO.champion_list
+        #champion_list = ChampionDAO.champion_list
         columns = ('attribute', 'value')
         tree = ttk.Treeview(self, columns=columns, show='headings')
 
@@ -51,7 +51,7 @@ class EditorFrame(tk.Toplevel):
         tree.heading('attribute', text="Attribute")
         tree.heading('value', text="Value")
 
-        tree.bind('<<TreeviewSelect>>', self.item_selected)
+        #tree.bind('<<TreeviewSelect>>', self.item_selected)
         tree.grid(row=1, column=1, sticky=tk.NSEW)
         #tree.pack(fill='x')
 
@@ -63,16 +63,7 @@ class EditorFrame(tk.Toplevel):
 
         tree.configure(yscrollcommand=scrollbar.set)
 
-                
-            
         return tree
-
-    def item_selected(self, event):
-        for selected_item in self.tree.selection():
-            item = self.tree.item(selected_item)
-            record = item['values']
-            # show a message
-            showinfo(title='Information', message=','.join(record))
 
     #auto updates the combox depending on user input
     #TODO: Make searching not case sensitive.
@@ -83,9 +74,13 @@ class EditorFrame(tk.Toplevel):
     def update_Tree(self):
         champ_stats = []
         champ_name = self.champion_selected.get()
+        
+        #if (self.tree_has_children):
+        for i in self.tree.get_children():
+            self.tree.delete(i)
+
 
         for champs in ChampionDAO.champion_list:
-            print(champs.champion_properties['champion_name'], champ_name)
             if champs.champion_properties['champion_name'] == champ_name:
                 champ = champs.champion_properties['stats'].total_stats
                 break                    
@@ -97,4 +92,5 @@ class EditorFrame(tk.Toplevel):
         for i in champ_stats:
             self.tree.insert('', tk.END, values=i)
         
+        self.tree_has_children=True
     
